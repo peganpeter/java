@@ -1,6 +1,6 @@
 package com.elsoproject.controller;
 
-import com.elsoproject.domain.Story;
+import main.com.elsoproject.domain.Story;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
