@@ -45,7 +45,7 @@
     <article th:each="story : ${stories}">
         <header>
             <h1 th:text="${story.title}">Ez itt a cím</h1>
-            <p th:text="${story.posted}">Posted on September 31, 2015 at 10:00 PM</p>
+            <p th:text="${#dates.format(story.posted, 'yyyy.MM.dd. HH:mm')}">Posted on September 31, 2015 at 10:00 PM</p>
         </header>
 
         <section th:utext="${story.content}">

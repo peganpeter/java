@@ -7,15 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 @Controller
 public class HomeController {
 
     @RequestMapping("/")
-    public String stories(Model model) {
+    public String stories(Model model, Locale locale) {
         //title címének átírása:
         model.addAttribute("pageTitle", "Valami valami");
         model.addAttribute("stories", getStories());
+        System.out.println(String.format("Request received. Language: %s, Contury: %s %n", locale.getLanguage(), locale.getDisplayCountry()));
         return "stories";
     }
 
