@@ -3,8 +3,11 @@ package com.javademo.controller;
 import com.javademo.domain.Story;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -19,6 +22,19 @@ public class HomeController {
         model.addAttribute("stories", getStories());
         System.out.println(String.format("Request received. Language: %s, Contury: %s %n", locale.getLanguage(), locale.getDisplayCountry()));
         return "stories";
+    }
+
+    @RequestMapping("/user/{id}")
+    public String searchForUser(@PathVariable(value="id") String id) throws Exception {
+        if (id == null)
+            throw new Exception("Nincs ilyen ID-val felhasználó.");
+        return "user";
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String exceptionHandler(HttpServletRequest ra, Exception ex, Model model) {
+        model.addAttribute(("errMEssage"), ex.getMessage());
+        return  null;
     }
 
     private ArrayList<Story> getStories() {
