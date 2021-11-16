@@ -39,7 +39,7 @@ public class HomeController {
 
     private ArrayList<Story> getStories() {
         ArrayList<Story> stories = new ArrayList<Story>();
-
+        /*
         Story story1 = new Story();
         story1.setTitle("Első sztorim");
         story1.setPosted(new Date());
@@ -54,7 +54,7 @@ public class HomeController {
 
         stories.add(story1);
         stories.add(story2);
-
+        */
         return stories;
     }
 

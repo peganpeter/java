@@ -1,16 +1,30 @@
 package com.javademo.domain;
 
+import javax.persistence.*;
 import java.util.Date;
-
+// POJO
+@Entity
 public class Story {
 
+    @GeneratedValue
+    @Id
+    private Long id;
     private String title;
     private String content;
     private Date posted;
-    private String author;
+    @ManyToOne
+    private Blogger blogger;
 
-    public Story() {
+    private Story() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -37,12 +51,12 @@ public class Story {
         this.posted = posted;
     }
 
-    public String getAuthor() {
-        return author;
+    public Blogger getBlogger() {
+        return blogger;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setBlogger(Blogger author) {
+        this.blogger = author;
     }
 
     @Override
